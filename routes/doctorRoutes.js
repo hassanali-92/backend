@@ -1,12 +1,12 @@
 import express from "express";
 import Prescription from "../models/Prescription.js";
-import Patient from "../models/Patient.js";
+
 import { protect, authorize } from "../models/authMiddleware.js";
 
 const router = express.Router();
 
 // 1. Prescription Likhen (Sirf Doctor)
-router.post("/add-prescription", protect, authorize("doctor", "admin"), async (req, res) => {
+router.post("/add", protect, authorize("doctor", "admin"), async (req, res) => {
   try {
     const { patientId, symptoms, diagnosis, medicines, advice } = req.body;
 
